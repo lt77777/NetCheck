@@ -2,7 +2,7 @@
 
 Free US take-home pay calculator. Enter gross wages and see an estimate of net per paycheck and per year, with a breakdown of federal income tax, Social Security, Medicare, and state income tax.
 
-Live site (GitHub Pages): https://lt77777.github.io/NetCheck/
+Intended live site (GitHub Pages): https://lt77777.github.io/NetCheck/
 
 Nothing is uploaded. There are no accounts. Salaries never leave the browser. This is an estimate, not tax advice.
 
@@ -54,12 +54,22 @@ Copy `.env.example` to `.env`. Set `VITE_ADSENSE_CLIENT` (or `VITE_ADSENSE_PUBLI
 
 ## GitHub Pages
 
-The production build lives in `docs/` (Vite `base` is `/NetCheck/`). Two ways to go live:
+The production build lives in `docs/` (Vite `base` is `/NetCheck/`). `.github/workflows/pages.yml` builds, tests, and deploys on every push to `main`.
 
-1. **Deploy from a branch (simplest):** open https://github.com/lt77777/NetCheck/settings/pages → Build and deployment → Source: **Deploy from a branch** → Branch **main**, folder **/docs** → Save. The site will be https://lt77777.github.io/NetCheck/
-2. **GitHub Actions:** this repo includes `.github/workflows/pages.yml`. Open the same Pages settings page → Source: **GitHub Actions**. The first run may ask you to approve the `github-pages` environment.
+Pages cannot be turned on from the GitHub API used here. One click:
 
-A `.nojekyll` file is included so GitHub does not run Jekyll. SEO routes (california, texas, new-york, florida, illinois, pennsylvania, ohio, georgia, north-carolina, michigan) are prerendered as extra `index.html` files during the production build.
+1. Open https://github.com/lt77777/NetCheck/settings/pages
+2. Build and deployment → Source: **GitHub Actions** → Save
+3. If GitHub asks you to create or approve a `github-pages` environment, do that
+4. Re-run the workflow: https://github.com/lt77777/NetCheck/actions/workflows/pages.yml → latest run → **Re-run jobs**
+
+The site will be https://lt77777.github.io/NetCheck/
+
+The build job already succeeds (install, tests, Vite production build, Pages artifact). Only deploy is blocked until Pages is enabled.
+
+Fallback if you prefer not to use Actions: same settings page → Source **Deploy from a branch** → Branch **main**, folder **/docs** → Save. A `.nojekyll` file is included so GitHub does not run Jekyll.
+
+SEO routes (california, texas, new-york, florida, illinois, pennsylvania, ohio, georgia, north-carolina, michigan) are prerendered as extra `index.html` files during the production build.
 
 ## Stack
 
