@@ -1,0 +1,23 @@
+{
+  "name": "netcheck",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Net Check — free US take-home pay calculator (tax year 2026).",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/prerender.js",
+    "preview": "vite preview",
+    "test": "node --test src/tax/calculate.test.js",
+    "icons": "node scripts/generate-icons.js"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.8.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.2",
+    "vite": "^7.1.3"
+  }
+}
