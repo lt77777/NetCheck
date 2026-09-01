@@ -16,7 +16,7 @@ npm test
 npm run dev
 ```
 
-Open http://localhost:5173/NetCheck/. Production build writes `docs/`. Preview with `npm run preview`.
+Then open http://localhost:5173/NetCheck/ (Vite `base` is `/NetCheck/`). Production build writes `docs/`. Preview with `npm run preview`.
 
 ## Tax year and sources
 
@@ -50,15 +50,16 @@ Local / city / school-district tax, NIIT, AMT, self-employment tax, credits (EIT
 
 Revenue is meant to come from ads on the result card. This project does not ship a publisher id.
 
-Copy `.env.example` to `.env`. Set `VITE_ADSENSE_CLIENT` to a real ca-pub id and `VITE_ADSENSE_SLOT_RESULT` to the numeric ad-unit slot, then rebuild. Until both are valid, the result card shows a labeled Ad placeholder and does not load the AdSense script.
+Copy `.env.example` to `.env`. Set `VITE_ADSENSE_CLIENT` (or `VITE_ADSENSE_PUBLISHER_ID`) to a real `ca-pub-…` id and `VITE_ADSENSE_SLOT_RESULT` to the numeric ad-unit slot, then rebuild. Until both are valid, the result card shows a labeled Ad placeholder and does not load the AdSense script.
 
 ## GitHub Pages
 
-The production build lives in `docs/` (Vite base is `/NetCheck/`). Pages should serve from the main branch, `/docs` folder.
+The production build lives in `docs/` (Vite `base` is `/NetCheck/`). Two ways to go live:
 
-If Pages is not on yet: open https://github.com/lt77777/NetCheck/settings/pages → Build and deployment → Source: Deploy from a branch → Branch `main`, folder `/docs` → Save. The site will be https://lt77777.github.io/NetCheck/
+1. **Deploy from a branch (simplest):** open https://github.com/lt77777/NetCheck/settings/pages → Build and deployment → Source: **Deploy from a branch** → Branch **main**, folder **/docs** → Save. The site will be https://lt77777.github.io/NetCheck/
+2. **GitHub Actions:** this repo includes `.github/workflows/pages.yml`. Open the same Pages settings page → Source: **GitHub Actions**. The first run may ask you to approve the `github-pages` environment.
 
-A `.nojekyll` file is included so GitHub does not run Jekyll. SEO routes (california, texas, new-york, florida, illinois, pennsylvania, ohio, georgia, north-carolina, michigan) are prerendered as extra index.html files during the production build.
+A `.nojekyll` file is included so GitHub does not run Jekyll. SEO routes (california, texas, new-york, florida, illinois, pennsylvania, ohio, georgia, north-carolina, michigan) are prerendered as extra `index.html` files during the production build.
 
 ## Stack
 

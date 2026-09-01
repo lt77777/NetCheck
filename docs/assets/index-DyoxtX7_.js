@@ -1,8 +1,8 @@
-const n = 5;
+const n = 14;
 const base = new URL("./index-DyoxtX7_.p", import.meta.url).href;
 const parts = await Promise.all(
   Array.from({ length: n }, (_, i) =>
-    fetch(base + i + ".txt").then((r) => {
+    fetch(base + String(i).padStart(2, "0") + ".txt").then((r) => {
       if (!r.ok) throw new Error("Missing bundle chunk " + i);
       return r.text();
     })
